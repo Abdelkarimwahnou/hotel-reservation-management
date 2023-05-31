@@ -26,7 +26,7 @@ flask --app App run
 ### 4. Results
 Interface:
 
-![Screenshot1](https://raw.githubusercontent.com/Abdelkarimwahnou/hotel-reservation-management/master/interface%20insert.PNG)
+![Screenshot1](https://raw.githubusercontent.com/Abdelkarimwahnou/hotel-reservation-management/master/Interface.PNG)
 
 Insert Button:
 
