@@ -22,7 +22,17 @@ app.config['MYSQL_DB'] = 'hotelreservation'
 cd FlaskCrudApplication
 flask --app App run
 ```
+
 ### 4. Results
-interface:
+Interface:
+
 ![Screenshot1](https://raw.githubusercontent.com/Abdelkarimwahnou/hotel-reservation-management/master/interface%20insert.PNG)
+
+Insert Button:
+
+![Screenshot2](https://raw.githubusercontent.com/Abdelkarimwahnou/hotel-reservation-management/master/interface%20insert.PNG)
+
+Update Button:
+
+![Screenshot3](https://raw.githubusercontent.com/Abdelkarimwahnou/hotel-reservation-management/master/Interface%20Update.PNG)
 
