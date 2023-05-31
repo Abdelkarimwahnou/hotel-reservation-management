@@ -1,0 +1,388 @@
+<html><head>
+
+    <title>OASIS HOTEL</title>
+
+    <link href="{{url_for('static',filename='css/bootstrap.min.css')}}"rel="stylesheet" >
+    <link rel="shortcut icon" href="{{url_for('static',filename ='hotel.png' )}}">
+
+</head>
+<body>
+{% block body %}
+
+<div class="container">
+
+    <div class="well text-center">
+
+        <h1>OASIS HOTEL DATABASE</h1>
+    </div>
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col md-12">
+
+                <h2>Reservation List <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#mymodal" >Add Reservation Data
+                </button>  </h2>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+
+                <div class="alert alert-success alert-dismissable" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+
+                        <span aria-hidden="true">x</span>
+                    </button>
+                     {{ message }}
+                </div>
+
+
+                {%endfor%}
+                {%endif%}
+                {%endwith%}
+
+                <table class="table table-striped">
+                    <tr>
+                        <th>Serial</th>
+                        <th>Booking_ID</th>
+                        <th>no_of_adults</th>
+                        <th>no_of_children</th>
+                        <th>no_of_week_nights</th>
+                        <th>room_type_reserved</th>
+                        <th>arrival_year</th>
+                        <th>arrival_month</th>
+                        <th>arrival_day</th>
+                        <th>booking_status</th>
+
+                    </tr>
+                    {% for row in  entries %}
+                    <tr>
+                        <td>{{row.0}}</td>
+                        <td>{{row.1}}</td>
+                         <td>{{row.2}}</td>
+                         <td>{{row.3}}</td>
+                         <td>{{row.4}}</td>
+                         <td>{{row.5}}</td>
+                         <td>{{row.6}}</td>
+                         <td>{{row.7}}</td>
+                         <td>{{row.8}}</td>
+                         <td>{{row.9}}</td>
+
+                        <td>
+                            <a href="/update/{{row.0}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.0}}">Update</a>
+                            <a href="/delete/{{row.0}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete?')">Delete</a>
+
+
+                        </td>
+                    </tr>
+                    <div id="modaledit{{row.0}}" class="modal fade" role="dialog">
+
+
+   <div class="modal-dialog">
+
+
+      <div class="modal-content">
+
+
+         <div class="modal-header">
+
+
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+
+            <h4 class="modal-title">Please Update Data</h4>
+
+
+         </div>
+
+
+         <div class="modal-body">
+
+
+            <form action="{{url_for('update')}}" method="POST">
+
+
+               <div class="form-group">
+
+
+                  <label>Booking_ID:</label>
+                   <input type="hidden" name="id" value="{{row.0}}">
+
+                  <input type="text" class="form-control" name="Booking_ID" value = "{{row.1}}">
+
+
+               </div>
+
+
+                <div class="form-group">
+
+
+                  <label>no_of_adults:</label>
+                  <input type="text" class="form-control" name="no_of_adults" value = "{{row.2}}">
+
+
+               </div>
+
+
+                <div class="form-group">
+
+
+                  <label>no_of_children</label>
+                  <input type="text" class="form-control" name="no_of_children" value = "{{row.3}}">
+
+
+               </div>
+                 <div class="form-group">
+
+
+                  <label>no_of_week_nights</label>
+                  <input type="text" class="form-control" name="no_of_week_nights" value = "{{row.4}}">
+
+
+               </div>
+                 <div class="form-group">
+
+
+                  <label>room_type_reserved</label>
+                  <input type="text" class="form-control" name="room_type_reserved" value = "{{row.5}}">
+
+
+               </div>
+                 <div class="form-group">
+
+
+                  <label>arrival_year</label>
+                  <input type="text" class="form-control" name="arrival_year" value = "{{row.6}}">
+
+
+               </div>
+                 <div class="form-group">
+
+
+                  <label>arrival_month</label>
+                  <input type="text" class="form-control" name="arrival_month" value = "{{row.7}}">
+
+
+               </div>
+                 <div class="form-group">
+
+
+                  <label>arrival_day</label>
+                  <input type="text" class="form-control" name="arrival_day" value = "{{row.8}}">
+
+
+               </div>
+                 <div class="form-group">
+
+
+                  <label>booking_status</label>
+                  <input type="text" class="form-control" name="booking_status" value = "{{row.9}}">
+
+
+               </div>
+
+
+
+
+               <div class="form-group">
+
+
+                  <button class="btn btn-primary" type="submit">Update Data</button>
+
+
+               </div>
+
+
+            </form>
+
+
+         </div>
+
+
+         <div class="modal-footer">
+
+
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
+         </div>
+
+
+      </div>
+
+
+   </div>
+
+
+</div>
+        {% endfor %}
+                    </table>
+
+            </div>
+
+        </div>
+
+
+        <div id="mymodal" class="modal fade" role="dialog">
+
+
+   <div class="modal-dialog">
+
+
+      <div class="modal-content">
+
+
+         <div class="modal-header">
+
+
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+
+            <h4 class="modal-title">Please Insert Data</h4>
+
+
+         </div>
+
+
+         <div class="modal-body">
+
+
+            <form action="{{url_for('insert')}}" method="POST">
+
+
+               <div class="form-group">
+
+
+                  <label>Booking_ID:</label>
+                  <input type="text" class="form-control" name="Booking_ID" required="1">
+
+
+               </div>
+
+
+                <div class="form-group">
+
+
+                  <label>no_of_adults:</label>
+                  <input type="text" class="form-control" name="no_of_adults" required="1">
+
+
+               </div>
+
+
+                <div class="form-group">
+
+
+                  <label>no_of_children</label>
+                  <input type="text" class="form-control" name="no_of_children" required="1">
+
+
+               </div>
+                 <div class="form-group">
+
+
+                  <label>no_of_week_nights</label>
+                  <input type="text" class="form-control" name="no_of_week_nights" required="1">
+
+
+               </div>
+                 <div class="form-group">
+
+
+                  <label>room_type_reserved</label>
+                  <input type="text" class="form-control" name="room_type_reserved" required="1">
+
+
+               </div>
+                 <div class="form-group">
+
+
+                  <label>arrival_year</label>
+                  <input type="text" class="form-control" name="arrival_year" required="1">
+
+
+               </div>
+                 <div class="form-group">
+
+
+                  <label>arrival_month</label>
+                  <input type="text" class="form-control" name="arrival_month" required="1">
+
+
+               </div>
+                 <div class="form-group">
+
+
+                  <label>arrival_day</label>
+                  <input type="text" class="form-control" name="arrival_day" required="1">
+
+
+               </div>
+                 <div class="form-group">
+
+
+                  <label>booking_status</label>
+                  <input type="text" class="form-control" name="booking_status" required="1">
+
+
+               </div>
+
+
+
+
+               <div class="form-group">
+
+
+                  <button class="btn btn-primary" type="submit">Insert Data</button>
+
+
+               </div>
+
+
+            </form>
+
+
+         </div>
+
+
+         <div class="modal-footer">
+
+
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
+         </div>
+
+
+      </div>
+
+
+   </div>
+
+
+</div>
+
+
+
+
+    </div>
+    {% endblock %}
+
+    <div class="well">
+
+<h3>Website:www.OASISHOTEL.com
+    <span class="pull-right">Like Us:www.facebook.com/OASISHOTEL</span>
+</h3>
+
+       </div>
+</div>
+
+
+</body>
+
+<script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.2.1.min.js')}}"></script>
+
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+
+</html>
