@@ -24,5 +24,5 @@ flask --app App run
 ```
 ### 4. Results
 interface:
-![Screenshot1](https://github.com/PC-APP-BD/hotel-reservation-management/blob/interface insert.png)
+![Screenshot1](https://raw.githubusercontent.com/Abdelkarimwahnou/hotel-reservation-management/master/interface%20insert.PNG)
 
