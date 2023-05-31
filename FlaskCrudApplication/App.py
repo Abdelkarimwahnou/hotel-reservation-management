@@ -30,13 +30,11 @@ def insert():
         no_of_children = request.form['no_of_children']
         no_of_week_nights = request.form['no_of_week_nights']
         room_type_reserved = request.form['room_type_reserved']
-        arrival_year = request.form['arrival_year']
-        arrival_month = request.form['arrival_month']
-        arrival_day = request.form['arrival_day']
+        arrival_date = request.form['arrival_date']
         booking_status = request.form['booking_status']
 
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO entries (Booking_ID, no_of_adults, no_of_children, no_of_week_nights, room_type_reserved, arrival_year, arrival_month, arrival_day, booking_status) VALUES  (%s,%s,%s,%s,%s,%s,%s,%s,%s)",(Booking_ID, no_of_adults, no_of_children, no_of_week_nights, room_type_reserved, arrival_year, arrival_month, arrival_day, booking_status))
+        cur.execute("INSERT INTO entries (Booking_ID, no_of_adults, no_of_children, no_of_week_nights, room_type_reserved, arrival_date,booking_status) VALUES  (%s,%s,%s,%s,%s,%s,%s)",(Booking_ID, no_of_adults, no_of_children, no_of_week_nights, room_type_reserved, arrival_date, booking_status))
         mysql.connection.commit()
         return redirect(url_for('Index'))
 
@@ -50,9 +48,7 @@ def update():
         no_of_children = request.form['no_of_children']
         no_of_week_nights = request.form['no_of_week_nights']
         room_type_reserved = request.form['room_type_reserved']
-        arrival_year = request.form['arrival_year']
-        arrival_month = request.form['arrival_month']
-        arrival_day = request.form['arrival_day']
+        arrival_date = request.form['arrival_date']
         booking_status = request.form['booking_status']
         cur = mysql.connection.cursor()
         cur.execute("""
@@ -63,19 +59,17 @@ def update():
               no_of_children=%s, 
               no_of_week_nights=%s, 
               room_type_reserved=%s, 
-              arrival_year=%s, 
-              arrival_month=%s, 
-              arrival_day=%s,   
+              arrival_date=%s,    
               booking_status=%s 
               WHERE id=%s
-              """, (Booking_ID,no_of_adults,no_of_children,no_of_week_nights,room_type_reserved,arrival_year,arrival_month,arrival_day,booking_status,id_data))
+              """, (Booking_ID,no_of_adults,no_of_children,no_of_week_nights,room_type_reserved,arrival_date,booking_status,id_data))
         flash("Data Updated Succesfully")
         mysql.connection.commit()
         return redirect(url_for('Index'))
 @app.route('/delete/<string:id_data>',methods = ['POST','GET'] )
 def delete(id_data):
     cur = mysql.connection.cursor()
-    cur.execute("DELETE FROM entries WHERE id=%s",(id_data))
+    cur.execute("DELETE FROM entries WHERE id=%s",[id_data])
     mysql.connection.commit()
     return redirect(url_for('Index'))
 

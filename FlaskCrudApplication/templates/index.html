@@ -50,9 +50,7 @@
                         <th>no_of_children</th>
                         <th>no_of_week_nights</th>
                         <th>room_type_reserved</th>
-                        <th>arrival_year</th>
-                        <th>arrival_month</th>
-                        <th>arrival_day</th>
+                        <th>arrival_date</th>
                         <th>booking_status</th>
 
                     </tr>
@@ -66,8 +64,7 @@
                          <td>{{row.5}}</td>
                          <td>{{row.6}}</td>
                          <td>{{row.7}}</td>
-                         <td>{{row.8}}</td>
-                         <td>{{row.9}}</td>
+
 
                         <td>
                             <a href="/update/{{row.0}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.0}}">Update</a>
@@ -112,6 +109,7 @@
                   <input type="text" class="form-control" name="Booking_ID" value = "{{row.1}}">
 
 
+
                </div>
 
 
@@ -119,7 +117,7 @@
 
 
                   <label>no_of_adults:</label>
-                  <input type="text" class="form-control" name="no_of_adults" value = "{{row.2}}">
+                  <input type="number" class="form-control" name="no_of_adults" value = "{{row.2}}">
 
 
                </div>
@@ -129,7 +127,7 @@
 
 
                   <label>no_of_children</label>
-                  <input type="text" class="form-control" name="no_of_children" value = "{{row.3}}">
+                  <input type="number" class="form-control" name="no_of_children" value = "{{row.3}}">
 
 
                </div>
@@ -137,7 +135,7 @@
 
 
                   <label>no_of_week_nights</label>
-                  <input type="text" class="form-control" name="no_of_week_nights" value = "{{row.4}}">
+                  <input type="number" class="form-control" name="no_of_week_nights" value = "{{row.4}}">
 
 
                </div>
@@ -145,39 +143,32 @@
 
 
                   <label>room_type_reserved</label>
-                  <input type="text" class="form-control" name="room_type_reserved" value = "{{row.5}}">
+
+                     <select class="form-control" name="room_type_reserved">
+                      <option value="Small">Small</option>
+                       <option value="Medium">Medium</option>
+                         <option value="Large">Large</option>
+                     </select>
 
 
                </div>
                  <div class="form-group">
 
 
-                  <label>arrival_year</label>
-                  <input type="text" class="form-control" name="arrival_year" value = "{{row.6}}">
+                  <label>arrival_date</label>
+                  <input type="date" class="form-control" name="arrival_date" value = "{{row.6}}">
 
 
                </div>
-                 <div class="form-group">
 
-
-                  <label>arrival_month</label>
-                  <input type="text" class="form-control" name="arrival_month" value = "{{row.7}}">
-
-
-               </div>
-                 <div class="form-group">
-
-
-                  <label>arrival_day</label>
-                  <input type="text" class="form-control" name="arrival_day" value = "{{row.8}}">
-
-
-               </div>
                  <div class="form-group">
 
 
                   <label>booking_status</label>
-                  <input type="text" class="form-control" name="booking_status" value = "{{row.9}}">
+                  <select class="form-control" name="booking_status">
+                     <option value="Canceled">Canceled</option>
+                         <option value="Not_Canceled">Not_Canceled</option>
+                 </select>
 
 
                </div>
@@ -265,7 +256,7 @@
 
 
                   <label>no_of_adults:</label>
-                  <input type="text" class="form-control" name="no_of_adults" required="1">
+                  <input type="number" class="form-control" name="no_of_adults" required="1">
 
 
                </div>
@@ -275,7 +266,7 @@
 
 
                   <label>no_of_children</label>
-                  <input type="text" class="form-control" name="no_of_children" required="1">
+                  <input type="number" class="form-control" name="no_of_children" required="1">
 
 
                </div>
@@ -283,7 +274,7 @@
 
 
                   <label>no_of_week_nights</label>
-                  <input type="text" class="form-control" name="no_of_week_nights" required="1">
+                  <input type="number" class="form-control" name="no_of_week_nights" required="1">
 
 
                </div>
@@ -291,45 +282,35 @@
 
 
                   <label>room_type_reserved</label>
-                  <input type="text" class="form-control" name="room_type_reserved" required="1">
+                   <select class="form-control" name="room_type_reserved">
+                      <option value="Small">Normal</option>
+                       <option value="Medium">Medium</option>
+                         <option value="Large">Large</option>
+                     </select>
 
 
                </div>
                  <div class="form-group">
 
 
-                  <label>arrival_year</label>
-                  <input type="text" class="form-control" name="arrival_year" required="1">
+                  <label>arrival_date</label>
+                  <input type="date" class="form-control" name="arrival_date" required="1">
 
 
                </div>
-                 <div class="form-group">
 
-
-                  <label>arrival_month</label>
-                  <input type="text" class="form-control" name="arrival_month" required="1">
-
-
-               </div>
-                 <div class="form-group">
-
-
-                  <label>arrival_day</label>
-                  <input type="text" class="form-control" name="arrival_day" required="1">
-
-
-               </div>
                  <div class="form-group">
 
 
                   <label>booking_status</label>
-                  <input type="text" class="form-control" name="booking_status" required="1">
+                     <select class="form-control" name="booking_status">
+                      <option value="Canceled">Canceled</option>
+                         <option value="Not_Canceled">Not_Canceled</option>
+                     </select>
+
 
 
                </div>
-
-
-
 
                <div class="form-group">
 
@@ -372,7 +353,7 @@
     <div class="well">
 
 <h3>Website:www.OASISHOTEL.com
-    <span class="pull-right">Like Us:www.facebook.com/OASISHOTEL</span>
+
 </h3>
 
        </div>
