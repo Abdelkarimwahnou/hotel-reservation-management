@@ -5,7 +5,7 @@ A simple Hotel room reservation management made with Flask
 ## Start app:
 ### 1. Install dependecies
 ```bash
-pip install requirement.txt
+pip install -r requirement.txt
 ```
 
 ### 2. Database setup
@@ -20,5 +20,5 @@ app.config['MYSQL_DB'] = 'hotelreservation'
 ### 3. Run app
 ```bash
 cd FlaskCrudApplication
-flask --app .\App.py run
+flask --app App run
 ```
